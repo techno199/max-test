@@ -64,6 +64,13 @@ const Profile = (props: Props) => {
   }, []);
 
   const userInfo = props.auth.userInfo;
+  const socialLinks = userInfo && userInfo.social
+    .map(s => {
+      const additionalIconInfo = labelToIconMap.find(e => e.label === s.label) || { label: '', iconSrc: ''};
+
+      return { ...additionalIconInfo, link: s.link, order: additionalIconInfo.order || 0 }
+    })
+    .sort((a, b) => b.order - a.order)
 
   return (
     <>
@@ -82,22 +89,23 @@ const Profile = (props: Props) => {
             <div className={props.classes.section}>
               <span className={props.classes.sectionTitle}>Знание языков:</span>
               {
-                userInfo.languages.map(lang => <span className={props.classes.sectionNode}>{ lang }</span>)
+                userInfo.languages.map(lang => <span key={lang} className={props.classes.sectionNode}>{ lang }</span>)
               }
             </div>
             <div className={props.classes.section}>
               <span className={props.classes.sectionTitle}>Ссылки:</span>
               {
-                userInfo.social.map(social => 
-                  <a href={social.link} className={classNames(props.classes.sectionNode, props.classes.social)}>
-                    {
-                      <>
-                        <img className={props.classes.socialIcon} src={getIconSrc(social.label)} />
-                        <span className={props.classes.socialName}>{ social.label }</span>
-                      </>
-                    }
-                  </a>
-                )
+                socialLinks &&
+                  socialLinks.map(socialLink => 
+                    <a key={socialLink.link} href={socialLink.link} className={classNames(props.classes.sectionNode, props.classes.social)}>
+                      {
+                        <>
+                          <img className={props.classes.socialIcon} src={socialLink.iconSrc} />
+                          <span className={props.classes.socialName}>{ socialLink.label }</span>
+                        </>
+                      }
+                    </a>
+                  )
               }
             </div>
           </>
@@ -151,12 +159,3 @@ const labelToIconMap: { label: string; iconSrc: string, order?: number }[] = [
     iconSrc: TwitchIcon
   }
 ];
-
-const getIconSrc = (label: string) => {
-  const icon = labelToIconMap.find(e => e.label === label);
-  if (icon) {
-    return icon.iconSrc;
-  } else {
-    return "";
-  }
-}
