@@ -86,6 +86,10 @@ const Login = (props: Props) => {
   return (
     <Grid container justify="center" alignItems="center" className={props.classes.root}>
       <form className={props.classes.loginWrap} noValidate>
+        {
+          errors.loginError &&
+            <span className={props.classes.errorMsg}>{ errors.loginError }</span>
+        }
         <TextField variant="filled" label="Логин" type="email" error={errors.email} value={loginValue} onChange={handleLoginChange} />
         <TextField variant="filled" label="Пароль" type="password" value={passwordValue} onChange={handlePasswordChange} />
         <div className={props.classes.buttons}>

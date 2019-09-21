@@ -12,7 +12,7 @@ import TwitterIcon from '../../img/twitter.jpg';
 import TwitchIcon from '../../img/twitch.jpg';
 import WebIcon from '../../img/web.jpg';
 import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/styles';
 
 const styles = { 
   section: {

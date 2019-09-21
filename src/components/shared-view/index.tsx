@@ -83,8 +83,8 @@ const SharedView = (props: Props) => {
     <div className={props.classes.root}>
       <AppBar position='static' className={props.classes.appBar}>
         <Tabs centered={xsUp} value={tabValue} onChange={handleTabChange}>
-          <Tab label="Новости" value="/news" />
-          <Tab label="Профиль" value="/profile" />
+          <Tab label="Новости" value="./news" />
+          <Tab label="Профиль" value="./profile" />
         </Tabs>
 
         <Button className={props.classes.loginBtn} onClick={handleLoginClick}>

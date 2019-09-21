@@ -23,7 +23,7 @@ interface Props {
 
 function App(props: Props) {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <SharedView />
     </BrowserRouter>
   );
