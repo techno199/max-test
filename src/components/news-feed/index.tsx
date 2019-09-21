@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { AxiosResponse } from 'axios';
 import { Card, CardContent, CardActions, Button, Typography, Grid, useMediaQuery } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import { LoadingState } from '../../store/loading/types';
 
 const styles = {
   root: {
@@ -35,6 +36,7 @@ const styles = {
 interface Props {
   classes: any;
   news: NewsState;
+  loading: LoadingState;
   fetchNews: () => Observable<AxiosResponse<any>>;
   setNews: (news: News[]) => void;
 }
@@ -74,7 +76,7 @@ const NewsFeed = (props: Props) => {
           ))
       }
       {
-        xsUp && (
+        xsUp && props.loading.loadingResourcesCount === 0 && (
           <div className={props.classes.totalNews}>
             <span>всего новостей: {props.news.news.length}</span>
           </div>
@@ -85,7 +87,8 @@ const NewsFeed = (props: Props) => {
 }
 
 const mapStateToProps = (state: AppState) => ({
-  news: state.news
+  news: state.news,
+  loading: state.loading
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
