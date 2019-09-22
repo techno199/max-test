@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Grid, TextField, Button } from '@material-ui/core';
-import { fetchLogin, setLoginAction, setUserIdAction } from '../../store/auth/actions';
+import { fetchLoginAction, setLoginAction, setUserIdAction } from '../../store/auth/actions';
 import { connect } from 'react-redux';
 import { Observable } from 'rxjs';
 import { AxiosResponse } from 'axios';
@@ -102,7 +102,7 @@ const Login = (props: Props) => {
 
 const mapDispatchToProps = (dispatch: any) => ({
   fetchLogin: (email: string, password: string) => {
-    return dispatch(fetchLogin(email, password));
+    return dispatch(fetchLoginAction(email, password));
   },
   saveUserInfo: (userId: number) => {
     dispatch(setLoginAction(true));

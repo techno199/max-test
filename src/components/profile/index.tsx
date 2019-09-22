@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FETCH_USER_INFO, AuthState, UserInfo } from '../../store/auth/types';
-import { fetchUserInfo, setUserInfoAction } from '../../store/auth/actions';
+import { fetchUserInfoAction, setUserInfoAction } from '../../store/auth/actions';
 import { Observable } from 'rxjs';
 import { AxiosResponse } from 'axios';
 import { AppState } from '../../store';
@@ -121,7 +121,7 @@ const mapStateToProps = (state: AppState) => ({
 
 const mapDispatchToProps = (dispatch: any) => ({
   getUserInfo: (userId: number) => {
-    return dispatch(fetchUserInfo(userId));
+    return dispatch(fetchUserInfoAction(userId));
   },
   setUserInfo: (userInfo: UserInfo) => {
     dispatch(setUserInfoAction(userInfo));

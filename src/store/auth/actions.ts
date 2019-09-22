@@ -33,7 +33,7 @@ export const setUserIdAction = (userId: number): BaseAction => {
 // Async actions
 
 /** Запрос на вход */
-export const fetchLogin = (email: string, password: string) => (dispatch: any) => {
+export const fetchLoginAction = (email: string, password: string) => (dispatch: any) => {
   return from(axios.post(
     `https://mysterious-reef-29460.herokuapp.com/api/v1/validate`, 
     {
@@ -45,7 +45,7 @@ export const fetchLogin = (email: string, password: string) => (dispatch: any) =
 }
 
 /** Запрос информации о пользователе */
-export const fetchUserInfo = (userId: number) => (dispatch: any) => {
+export const fetchUserInfoAction = (userId: number) => (dispatch: any) => {
   return from(axios.get(
     `https://mysterious-reef-29460.herokuapp.com/api/v1/user-info/${userId}`
   )).pipe(

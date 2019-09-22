@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { AppState } from '../../store';
-import { fetchNews, setNewsAction } from '../../store/news/actions';
+import { fetchNewsAction, setNewsAction } from '../../store/news/actions';
 import { connect } from 'react-redux';
 import { NewsState, News } from '../../store/news/types';
 import { Observable } from 'rxjs';
@@ -92,7 +92,7 @@ const mapStateToProps = (state: AppState) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  fetchNews: () => dispatch(fetchNews()),
+  fetchNews: () => dispatch(fetchNewsAction()),
   setNews: (news: News[]) => dispatch(setNewsAction(news))
 });
 

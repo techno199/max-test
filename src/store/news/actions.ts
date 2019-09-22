@@ -11,7 +11,7 @@ export const setNewsAction = (news: News[]): BaseAction => {
   }
 }
 
-export const fetchNews = () => (dispatch: any) => {
+export const fetchNewsAction = () => (dispatch: any) => {
   return from(axios.get(
     `https://mysterious-reef-29460.herokuapp.com/api/v1/news`
   )).pipe(
