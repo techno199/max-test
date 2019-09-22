@@ -57,8 +57,9 @@ const NewsFeed = (props: Props) => {
     <Grid container direction="column" wrap="nowrap" spacing={2} className={props.classes.root}>
       {
         props.news &&
-          props.news.news.map(news => (
-            <Grid item>
+          props.news.news.map((news, i) => (
+            // key={news.id}
+            <Grid item key={i}>
               <Card>
                 <CardContent>
                   <Typography className={props.classes.title} variant="h5">
