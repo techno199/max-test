@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/max-test/static/css/main.bb324000.chunk.css",
-    "main.js": "/max-test/static/js/main.1adfd6ad.chunk.js",
-    "main.js.map": "/max-test/static/js/main.1adfd6ad.chunk.js.map",
+    "main.js": "/max-test/static/js/main.b8e521fa.chunk.js",
+    "main.js.map": "/max-test/static/js/main.b8e521fa.chunk.js.map",
     "runtime~main.js": "/max-test/static/js/runtime~main.ad18a105.js",
     "runtime~main.js.map": "/max-test/static/js/runtime~main.ad18a105.js.map",
     "static/js/2.5d196b2d.chunk.js": "/max-test/static/js/2.5d196b2d.chunk.js",
     "static/js/2.5d196b2d.chunk.js.map": "/max-test/static/js/2.5d196b2d.chunk.js.map",
     "index.html": "/max-test/index.html",
-    "precache-manifest.8782695764b74282197a55727d9abd62.js": "/max-test/precache-manifest.8782695764b74282197a55727d9abd62.js",
+    "precache-manifest.f992d8aa3c69a1c261c7e4f4c125cc46.js": "/max-test/precache-manifest.f992d8aa3c69a1c261c7e4f4c125cc46.js",
     "service-worker.js": "/max-test/service-worker.js",
     "static/css/main.bb324000.chunk.css.map": "/max-test/static/css/main.bb324000.chunk.css.map"
   }
