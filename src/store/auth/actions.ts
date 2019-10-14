@@ -4,6 +4,9 @@ import axios from 'axios';
 import { from } from 'rxjs';
 import { loadable } from "../loading/types";
 
+const apiLogin = `https://mysterious-reef-29460.herokuapp.com/api/v1/validate`;
+const apiUserInfo = `https://mysterious-reef-29460.herokuapp.com/api/v1/user-info`;
+
 /** Сохраняет состояние авторизации */
 export const setLoginAction = (isLoggedIn: boolean): BaseAction => {
   return {
@@ -35,7 +38,7 @@ export const setUserIdAction = (userId: number): BaseAction => {
 /** Запрос на вход */
 export const fetchLoginAction = (email: string, password: string) => (dispatch: any) => {
   return from(axios.post(
-    `https://mysterious-reef-29460.herokuapp.com/api/v1/validate`, 
+    apiLogin, 
     {
       email,
       password
@@ -47,7 +50,7 @@ export const fetchLoginAction = (email: string, password: string) => (dispatch: 
 /** Запрос информации о пользователе */
 export const fetchUserInfoAction = (userId: number) => (dispatch: any) => {
   return from(axios.get(
-    `https://mysterious-reef-29460.herokuapp.com/api/v1/user-info/${userId}`
+    `${apiUserInfo}/${userId}`
   )).pipe(
     loadable(dispatch)
   );

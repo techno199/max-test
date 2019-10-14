@@ -15,8 +15,8 @@ export const authReducer = (state = initialState, action: BaseAction): AuthState
       localStorage.setItem('isLoggedIn', JSON.stringify(action.payload));
       return { ...state, isLoggedIn: action.payload }
     case SET_USER_ID:
-        localStorage.setItem('userId', JSON.stringify(action.payload));
-        return { ...state, userId: action.payload }
+      localStorage.setItem('userId', JSON.stringify(action.payload));
+      return { ...state, userId: action.payload }
     case SET_USER_INFO:
       return { ...state, userInfo: action.payload }
     default:
