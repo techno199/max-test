@@ -64,13 +64,8 @@ const Profile = (props: Props) => {
   }, []);
 
   const userInfo = props.auth.userInfo;
-  const socialLinks = userInfo && userInfo.social
-    .map(s => {
-      const additionalIconInfo = labelToIconMap.find(e => e.label === s.label) || { label: '', iconSrc: ''};
-
-      return { ...additionalIconInfo, link: s.link, order: additionalIconInfo.order || 0 }
-    })
-    .sort((a, b) => b.order - a.order)
+  const socialLinks = userInfo && userInfo.social && getSocialLinks(userInfo.social);
+    
 
   return (
     <>
@@ -159,3 +154,20 @@ const labelToIconMap: { label: string; iconSrc: string, order?: number }[] = [
     iconSrc: TwitchIcon
   }
 ];
+
+interface SocialLink {
+  iconSrc: string;
+  link: string;
+  label: string;
+  order?: number;
+}
+
+export const getSocialLinks = (links: { link: string; label: string }[]): SocialLink[] => {
+  return links
+    .map(s => {
+      const additionalIconInfo = labelToIconMap.find(e => e.label === s.label) || { label: '', iconSrc: ''};
+
+      return { ...additionalIconInfo, link: s.link, order: additionalIconInfo.order || 0 }
+    })
+    .sort((a, b) => b.order - a.order);
+}
