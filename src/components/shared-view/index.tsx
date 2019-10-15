@@ -13,6 +13,7 @@ import { setLoginAction } from '../../store/auth/actions';
 import { SharedViewLoader } from './shared-view-loader';
 import { LoadingState } from '../../store/loading/types';
 import { withStyles } from '@material-ui/core/styles';
+import { SharedViewErrorBoundary } from './shared-view-error-boundary';
 
 const styles = (theme: any) => ({ 
   root: {
@@ -55,7 +56,7 @@ interface Props extends RouteComponentProps {
 }
 
 const SharedView = (props: Props) => {
-  const [tabValue, setTabValue] = useState("news");
+  const [tabValue, setTabValue] = useState("/news");
   const xsUp = useMediaQuery('(min-width: 960px');
 
   // Подписка на изменение роута для работы меню навигации
@@ -89,19 +90,21 @@ const SharedView = (props: Props) => {
 
         <Button className={props.classes.loginBtn} onClick={handleLoginClick}>
           {
-            props.auth.isLoggedIn ?
-              "Выйти" :
-              "Войти"
+            props.auth.isLoggedIn 
+              ? "Выйти" 
+              : "Войти"
           }
         </Button>
       </AppBar>
       <Grid container justify="center" className={props.classes.contentWrap}>
-        <Grid item xs={10} md={5} xl={4} className={props.classes.content}>
-          <Route path="/" exact render={() => <Redirect to="/news" />}/>
-          <Route path="/login" component={Login} />
-          <Route path="/news" component={NewsFeed} />
-          <ProtectedRoute path="/profile" component={Profile} />
-        </Grid>
+        <SharedViewErrorBoundary>
+          <Grid item xs={10} md={5} xl={4} className={props.classes.content}>
+            <Route path="/" exact render={() => <Redirect to="/news" />}/>
+            <Route path="/login" component={Login} />
+            <Route path="/news" component={NewsFeed} />
+            <ProtectedRoute path="/profile" component={Profile} />
+          </Grid>
+        </SharedViewErrorBoundary>
         {
           props.loading.loadingResourcesCount > 0
             ? <SharedViewLoader className={props.classes.loader} />

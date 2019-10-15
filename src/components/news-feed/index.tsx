@@ -79,7 +79,9 @@ const NewsFeed = (props: Props) => {
       {
         xsUp && props.loading.loadingResourcesCount === 0 && (
           <div className={props.classes.totalNews}>
-            <span>всего новостей: {props.news.news.length}</span>
+            <span>
+              всего новостей: { props.news.news.length }
+            </span>
           </div>
         )
       }

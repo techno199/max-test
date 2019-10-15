@@ -84,7 +84,11 @@ const Profile = (props: Props) => {
             <div className={props.classes.section}>
               <span className={props.classes.sectionTitle}>Знание языков:</span>
               {
-                userInfo.languages.map(lang => <span key={lang} className={props.classes.sectionNode}>{ lang }</span>)
+                userInfo.languages.map(lang => 
+                  <span key={lang} className={props.classes.sectionNode}>
+                    { lang }
+                  </span>
+                )
               }
             </div>
             <div className={props.classes.section}>

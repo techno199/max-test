@@ -7,15 +7,12 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { rootReducer } from './store';
 import thunk from 'redux-thunk';
-import { ThemeProvider } from '@material-ui/styles';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
+    <App />
   </Provider>,
   document.getElementById('root')
 );
