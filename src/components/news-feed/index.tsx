@@ -46,7 +46,7 @@ const NewsFeed = (props: Props) => {
     props.fetchNews()
       .subscribe(res => {
         let news = res.data.data as News[];
-        news = news.slice().concat(news.slice()).concat(news.slice());
+        news = multiplyNews(news, 4);
         props.setNews(news as News[]);
       })
   }, []);
@@ -101,3 +101,11 @@ const mapDispatchToProps = (dispatch: any) => ({
 const NewsFeedStyled = connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(NewsFeed));
 
 export { NewsFeedStyled as NewsFeed }
+
+export const multiplyNews = (news: News[], multiplier: number): News[] => {
+  for (let i=1; i<multiplier; i++) {
+    news = news.concat(news.slice())
+  }
+
+  return news;
+}

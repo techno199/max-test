@@ -1,6 +1,6 @@
 import { getSocialLinks } from "."
 
-it('should sort social links. First links must be related to website.', () => {
+it('should sort social links. First link must be related to website.', () => {
   const dummyLinks: { link: string; label: string }[] = [
     {
       label: 'web',
